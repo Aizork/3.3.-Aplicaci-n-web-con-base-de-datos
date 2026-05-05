@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRUD App</title>
+</head>
+<body>
+
+<h2>Agregar usuario</h2>
+<form action="/add" method="POST">
+    <input type="text" name="name" required>
+    <button type="submit">Agregar</button>
+</form>
+
+<h2>Lista de usuarios</h2>
+
+<ul>
+    <% users.forEach(user => { %>
+        <li>
+            <form action="/edit/<%= user.id %>" method="POST" style="display:inline;">
+                <input type="text" name="name" value="<%= user.name %>">
+                <button>Editar</button>
+            </form>
+
+            <a href="/delete/<%= user.id %>">Eliminar</a>
+        </li>
+    <% }) %>
+</ul>
+
+</body>
+</html>
